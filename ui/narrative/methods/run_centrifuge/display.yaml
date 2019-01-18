@@ -42,17 +42,17 @@ parameters :
 
 description : |
     <p>Centrifuge is a novel microbial classification engine that enables rapid, accurate, and sensitive labeling of reads and quantification of species on desktop computers. The system uses a novel indexing scheme based on the Burrows-Wheeler transform (BWT) and the Ferragina-Manzini (FM) index, optimized specifically for the metagenomic classification problem. Centrifuge requires a relatively small index (5.8 GB for all complete bacterial and viral genomes plus the human genome) and classifies sequences at a very high speed, allowing it to process the millions of reads from a typical high-throughput DNA sequencing run within a few minutes. Together these advances enable timely and accurate analysis of large metagenomics data sets on conventional desktop computers.</p>
-
-	<hr>
+    <hr>
     <p>
-	wrapped for KBase by <a href="mailto:mflynn@lanl.gov">Mark Flynn</a> and <a href="mailto:chienchi@lanl.gov">Chienchi Lo</a>
-	</p>
-	<hr>
-	<h3>Description</h3>
-	Centrifuge offers one reference databases for classification, which are downloaded from the <a href="https://ccb.jhu.edu/software/centrifuge/manual.shtml">Centrifuge webserver page</a> (last updated 12/06/2016).  The databases are<p>
-	<ul>
-	<li> <b>Bacteria, Aarchaea, Viruses, Human</b>
+    wrapped for KBase by <a href="mailto:mflynn@lanl.gov">Mark Flynn</a> and <a href="mailto:chienchi@lanl.gov">Chienchi Lo</a>
+    </p>
+    <hr>
+    <h3>Description</h3>
+    Centrifuge offers one reference databases for classification, which are downloaded from the <a href="https://ccb.jhu.edu/software/centrifuge/manual.shtml">Centrifuge webserver page</a> (last updated 12/06/2016).  The databases are<p>
+    <ul>
+    <li> <b>Bacteria, Aarchaea, Viruses, Human</b></li>
     </ul>
+    </p>
 
 publications :
     -
