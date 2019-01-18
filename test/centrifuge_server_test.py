@@ -2,6 +2,8 @@
 import os
 import time
 import unittest
+import subprocess
+import logging
 from configparser import ConfigParser
 
 from centrifuge.centrifugeImpl import centrifuge
@@ -63,5 +65,24 @@ class centrifugeTest(unittest.TestCase):
         #
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
-        ret = self.serviceImpl.run_centrifuge(self.ctx, {'workspace_name': self.wsName,
-                                                             'parameter_1': 'Hello World!'})
+        result = self.serviceImpl.run_centrifuge(self.ctx, {'workspace_name': self.wsName,
+                                                       'input_refs': ['22852/4/1'],
+                                                       'db_type': 'p_compressed+h+v'
+                                                       })
+        # report_params = result[0]['report_params']
+        # logging.info(report_params)
+        logging.info(result)
+        #self.assertEqual(report_params['html_links'][0]['name'],
+        #                  'default.krona.html')
+
+    def test_centrifuge(self):
+        # 'sh lib/gottcha2/src/uge-gottcha2.sh -i test/data/test.fastq -o test/data/output -p testing -d test/data/RefSeq-r90.cg.Viruses.species.fna'
+        cmd = ['/kb/module/lib/centrifuge/Utils/uge-centrifuge.sh', '-i', '/data/test.fastq', '-o', '/kb/module/work/output', '-p',
+               'testing', '-d', '/data/centrifuge/p_compressed+h+v']
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        print(p.communicate())
+        #self.assertTrue(os.path.exists('/kb/module/work/output/testing.summary.tsv'))
+        self.assertTrue(os.path.exists('/kb/module/work/output/testing.krona.html'))
+        #with open('/kb/module/test/data/output/testing.summary.tsv', 'r') as fp:
+        #    lines = fp.readlines()
+        #    self.assertTrue('Zaire ebolavirus' in lines[5])

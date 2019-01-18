@@ -26,15 +26,15 @@
             "optional": false,
             "advanced": false,
             "allow_multiple": false,
-            "default_values": ["p_compressed+h+v.1.cf"],
+            "default_values": ["p_compressed+h+v"],
             "field_type": "dropdown",
                 "dropdown_options": {
                     "options": [
                         {
-                            "value": "p_compressed+h+v.1.cf",
+                            "value": "p_compressed+h+v",
                             "display": "Centrifuge DB for Bacteria, Archaea, Viruses, Human",
-                            "id": "p_compressed+h+v.1.cf",
-                            "ui-name": "p_compressed+h+v.1.cf"
+                            "id": "p_compressed+h+v",
+                            "ui-name": "p_compressed+h+v"
                         }
                     ]
                 }
