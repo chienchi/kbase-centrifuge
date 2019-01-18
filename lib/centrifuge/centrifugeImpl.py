@@ -24,7 +24,7 @@ class centrifuge:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/chienchi/kbase-centrifuge.git"
-    GIT_COMMIT_HASH = "9ba28604d78f9f0173eef60703d49a034a1c2e05"
+    GIT_COMMIT_HASH = "4bf8c49dbcc55b21c98d222a6a8d4ec69223b2b2"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
