@@ -23,8 +23,8 @@ class centrifuge:
     # the latter method is running.
     ######################################### noqa
     VERSION = "0.0.1"
-    GIT_URL = ""
-    GIT_COMMIT_HASH = ""
+    GIT_URL = "https://github.com/chienchi/kbase-centrifuge.git"
+    GIT_COMMIT_HASH = "9ba28604d78f9f0173eef60703d49a034a1c2e05"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
