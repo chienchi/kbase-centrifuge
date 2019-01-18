@@ -1,0 +1,74 @@
+#
+# define display information
+#
+name: Centrifuge - Taxonomic Classifier 1.0.3
+
+tooltip: |
+    Taxonomic Classification of Shotgun Metagenomic Read data
+
+screenshots:
+    - krona.png
+
+icon: icon.png
+
+#
+# define a set of similar apps that might be useful to the user
+#
+suggestions:
+    apps:
+        related:
+            [kb_kaiju, gottcha2]
+
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    input_refs :
+        ui-name : |
+            Read library (or Set) objects <font color=red>*</font>
+        short-hint : |
+            The read library or read library set to examine
+        long-hint  : |
+            The read library or read library set to examine
+    db_type :
+        ui-name : |
+            Reference DB
+        short-hint : |
+            Database to search against for classification
+        long-hint : |
+            Database to search against for classification
+
+
+description : |
+    <p>Centrifuge is a novel microbial classification engine that enables rapid, accurate, and sensitive labeling of reads and quantification of species on desktop computers. The system uses a novel indexing scheme based on the Burrows-Wheeler transform (BWT) and the Ferragina-Manzini (FM) index, optimized specifically for the metagenomic classification problem. Centrifuge requires a relatively small index (5.8 GB for all complete bacterial and viral genomes plus the human genome) and classifies sequences at a very high speed, allowing it to process the millions of reads from a typical high-throughput DNA sequencing run within a few minutes. Together these advances enable timely and accurate analysis of large metagenomics data sets on conventional desktop computers.</p>
+
+	<hr>
+    <p>
+	wrapped for KBase by <a href="mailto:mflynn@lanl.gov">Mark Flynn</a> and <a href="mailto:chienchi@lanl.gov">Chienchi Lo</a>
+	</p>
+	<hr>
+	<h3>Description</h3>
+	Centrifuge offers one reference databases for classification, which are downloaded from the <a href="https://ccb.jhu.edu/software/centrifuge/manual.shtml">Centrifuge webserver page</a> (last updated 12/06/2016).  The databases are<p>
+	<ul>
+	<li> <b>Bacteria, Aarchaea, Viruses, Human</b>
+    </ul>
+
+publications :
+    -
+        pmid: 27852649
+        display-text : |
+            Kim D, Song L, Breitwieser FP, and Salzberg SL. Centrifuge: rapid and sensitive classification of metagenomic sequences. Genome Res. 2016 Dec;26(12):1721-1729.
+        link: http://www.ncbi.nlm.nih.gov/pubmed/27852649
+    -
+        display-text: |
+            GOTTCHA2 DBs from:
+        link: ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/p_compressed+h+v.tar.gz
+    -
+        display-text: |
+            Krona homepage:
+        link: https://github.com/marbl/Krona/wiki
+    -
+        display-text: |
+            Github for Krona:
+        link: https://github.com/marbl/Krona

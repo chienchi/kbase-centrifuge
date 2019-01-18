@@ -1,0 +1,77 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "chienchilo", "mcflynn617"
+    ],
+    "contact": "",
+    "categories": ["active","communities","reads","sequence"],
+    "widgets": {
+        "input": null,
+        "output": null
+    },
+    "parameters": [ 
+        {
+            "id": "input_refs",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": ["KBaseSets.ReadsSet", "KBaseFile.PairedEndLibrary", "KBaseFile.SingleEndLibrary"]
+            }
+        },
+        {
+            "id": "db_type",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": ["p_compressed+h+v.1.cf"],
+            "field_type": "dropdown",
+                "dropdown_options": {
+                    "options": [
+                        {
+                            "value": "p_compressed+h+v.1.cf",
+                            "display": "Centrifuge DB for Bacteria, Archaea, Viruses, Human",
+                            "id": "p_compressed+h+v.1.cf",
+                            "ui-name": "p_compressed+h+v.1.cf"
+                        }
+                    ]
+                }
+        }
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "centrifuge",
+            "method": "run_centrifuge",
+            "input_mapping": [
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_name"
+                },{
+                    "narrative_system_variable": "workspace_id",
+                    "target_property": "workspace_id"
+                },{
+                    "input_parameter": "input_refs",
+                    "target_property": "input_refs",
+                    "target_type_transform": "list<resolved-ref>"
+                },
+				{
+					"input_parameter": "db_type",
+					"target_property": "db_type"
+				}
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [0,"report_name"],
+                    "target_property": "report_name"
+                },{
+                    "service_method_output_path": [0,"report_ref"],
+                    "target_property": "report_ref"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}
