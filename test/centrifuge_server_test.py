@@ -73,7 +73,7 @@ class centrifugeTest(unittest.TestCase):
         # logging.info(report_params)
         logging.info(result)
         #self.assertEqual(report_params['html_links'][0]['name'],
-        #                  'default.krona.html')
+        #                  'centrifuge.krona.html')
 
     def test_centrifuge(self):
         # 'sh lib/gottcha2/src/uge-gottcha2.sh -i test/data/test.fastq -o test/data/output -p testing -d test/data/RefSeq-r90.cg.Viruses.species.fna'

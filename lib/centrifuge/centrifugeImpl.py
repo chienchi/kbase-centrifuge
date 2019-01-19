@@ -71,7 +71,7 @@ class centrifuge:
         output_dir = os.path.join(self.scratch, 'centrifuge_out')
         os.makedirs(output_dir)
         cmd = ['/kb/module/lib/centrifuge/Utils/uge-centrifuge.sh', '-i', fastq_files_string, '-o', output_dir, '-p',
-               'default', '-d', '/data/centrifuge/' + params['db_type']]
+               'centrifuge', '-d', '/data/centrifuge/' + params['db_type']]
         logging.info('cmd {cmd}')
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         logging.info('subprocess {p.communicate()}')
@@ -85,8 +85,8 @@ class centrifuge:
                                       'name': output
                                       })
 
-        output_html_files = {'path': os.path.join(output_dir, 'default.krona.html'),
-                             'name': 'default.krona.html'}
+        output_html_files = {'path': os.path.join(output_dir, 'centrifuge.krona.html'),
+                             'name': 'centrifuge.krona.html'}
         report_params = {'message': 'Centrifuge run finished',
                          'workspace_name': params.get('workspace_name'),
                          'objects_created': objects_created,
