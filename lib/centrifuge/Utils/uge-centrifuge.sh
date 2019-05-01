@@ -21,6 +21,8 @@ OPTIONS:
 EOF
 }
 
+rootdir=$( cd $(dirname $0) ; pwd -P )
+
 FASTQ=
 REFDB=/data/centrifuge/p_compressed+h+v
 PREFIX=
@@ -73,6 +75,9 @@ convert_krakenRep2tabTree.pl < $OUTPATH/$PREFIX.kreport.csv > $OUTPATH/$PREFIX.o
 
 # Make Krona plot
 ktImportText  $OUTPATH/$PREFIX.out.tab_tree -o $OUTPATH/$PREFIX.krona.html
+
+#generate Tree Dendrogram
+phylo_dot_plot.pl -i $OUTPATH/$PREFIX.out.tab_tree -p $OUTPATH/$PREFIX.tree -t 'Centrifuge'
 
 # This is old 101817. See above for current Krona plot creation (consistent with the method used for other tools).
 #generate krona plot

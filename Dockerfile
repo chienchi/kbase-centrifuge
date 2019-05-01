@@ -9,17 +9,15 @@ MAINTAINER KBase Developer
 # Here we install a python coverage tool and an
 # https library that is out of date in the base image.
 RUN pip install coverage &&\
-    apt-get update && apt-get install -y build-essential zlib1g-dev gawk wget
+    apt-get update && apt-get install -y build-essential zlib1g-dev gawk wget bioperl
 
-# For minimap2 bin
+# For centrifuge bin  and Krona tools
 WORKDIR /kb/module
 RUN \
     git clone https://github.com/infphilo/centrifuge.git && \
     cd centrifuge && make && \
-    make install prefix=/kb/deployment
-
-# For Krona Tools
-RUN \
+    make install prefix=/kb/deployment && \
+    cd ../ && \
     git clone https://github.com/marbl/Krona && \
     cd Krona/KronaTools && \
     ./install.pl --prefix /kb/deployment && \

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Centrifuge Result</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .tab-frame {
+        margin-top: 15px;
+        border: none;
+        width: 100%;
+        height: 450px;
+    }
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <h3>Centrifuge Result</h3>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" id="TableTab" href="#table">Result Table</a></li>
+    <li><a data-toggle="tab" href="#treeplot">Dendrogram</a></li>
+    <li><a data-toggle="tab" href="#kronaplot">Krona Plot</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="table" class="tab-pane fade in active">
+      <iframe class="tab-frame " src="centrifuge.datatable.html"></iframe>
+    </div>
+    <div id="treeplot" class="tab-pane fade">
+      <img src="centrifuge.tree.svg" alt="Dendrogram" width="90%">
+    </div>
+    <div id="kronaplot" class="tab-pane fade">
+      <iframe class="tab-frame" src="centrifuge.krona.html"></iframe>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -66,11 +66,11 @@ class centrifugeTest(unittest.TestCase):
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
         result = self.serviceImpl.run_centrifuge(self.ctx, {'workspace_name': self.wsName,
-                                                       'input_refs': ['22852/4/1'],
+                                                       'input_refs': ['22852/10/1'],
                                                        'db_type': 'p_compressed+h+v'
                                                        })
-        # report_params = result[0]['report_params']
-        # logging.info(report_params)
+        report_params = result[0]
+        logging.info(report_params)
         logging.info(result)
         #self.assertEqual(report_params['html_links'][0]['name'],
         #                  'centrifuge.krona.html')
