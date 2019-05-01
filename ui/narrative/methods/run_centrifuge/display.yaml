@@ -62,7 +62,7 @@ publications :
         link: http://www.ncbi.nlm.nih.gov/pubmed/27852649
     -
         display-text: |
-            GOTTCHA2 DBs from:
+            Centrifuge DBs from:
         link: ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/p_compressed+h+v.tar.gz
     -
         display-text: |
