@@ -27,7 +27,7 @@ FASTQ=
 REFDB=/data/centrifuge/p_compressed+h+v
 PREFIX=
 OUTPATH=
-THREADS=24
+THREADS=4
 OPTIONS=
 
 while getopts "i:d:o:p:t:n:h" OPTION
@@ -65,7 +65,7 @@ mkdir -p $OUTPATH
 echo "[BEGIN]"
 
 set -x;
-time centrifuge -x $REFDB $OPTIONS -p $THREADS -U $FASTQ -S $OUTPATH/$PREFIX.classification.csv --report-file $OUTPATH/$PREFIX.report.txt -p 8
+time centrifuge -x $REFDB $OPTIONS -p $THREADS -U $FASTQ -S $OUTPATH/$PREFIX.classification.csv --report-file $OUTPATH/$PREFIX.report.txt
 time centrifuge-kreport -x $REFDB $OUTPATH/$PREFIX.classification.csv > $OUTPATH/$PREFIX.kreport.csv
 set +e;
 
