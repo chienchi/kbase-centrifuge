@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kraken2 Result</title>
+  <title>{{ outprefix[0]|upper}}{{outprefix[1:] }} Result</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
 <body>
 
 <div class="container">
-  <h3>{{label}} Kraken2 Result</h3>
+  <h3>{{label}} {{ outprefix[0]|upper}}{{outprefix[1:] }} Result</h3>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" id="TableTab" href="#table">Result Table</a></li>
     <li><a data-toggle="tab" href="#treeplot">Dendrogram</a></li>
@@ -28,13 +28,13 @@
 
   <div class="tab-content">
     <div id="table" class="tab-pane fade in active">
-      <iframe class="tab-frame " src="{{ label }}_kraken2.datatable.html"></iframe>
+      <iframe class="tab-frame " src="{{ label }}_{{ outprefix }}.datatable.html"></iframe>
     </div>
     <div id="treeplot" class="tab-pane fade">
-      <img src="{{ label }}_kraken2.tree.svg" alt="Dendrogram" width="90%">
+      <img src="{{ label }}_{{ outprefix }}.tree.svg" alt="Dendrogram" width="90%">
     </div>
     <div id="kronaplot" class="tab-pane fade">
-      <iframe class="tab-frame" src="{{ label }}_kraken2.krona.html"></iframe>
+      <iframe class="tab-frame" src="{{ label }}_{{ outprefix }}.krona.html"></iframe>
     </div>
   </div>
 </div>
