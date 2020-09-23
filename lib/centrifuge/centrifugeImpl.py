@@ -472,7 +472,7 @@ class centrifuge:
             os.makedirs(report_dir)
         summary_file_dt = os.path.join(report_dir, f'{label}_{outprefix}.datatable.html')
         self._generate_DataTable(summary_file, summary_file_dt)
-        self.fill_template('/kb/module/lib/centrifuge/Utils/index.html.tmpl', {'label': label},
+        self.fill_template('/kb/module/lib/centrifuge/Utils/index.html.tmpl', {'label': label, 'outprefix': outprefix},
                            os.path.join(report_dir, f'{label}_index.html'))
         shutil.copy2(os.path.join(output_dir, f'{outprefix}.krona.html'),
                      os.path.join(report_dir, f'{label}_{outprefix}.krona.html'))
