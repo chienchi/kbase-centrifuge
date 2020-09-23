@@ -1,0 +1,30 @@
+    <script> 
+        // Set height of the iframe based on the space available in this viewport
+        function setHeight() {
+            var menu = document.getElementById('menu');
+            var menuHeight = menu.getBoundingClientRect().height;
+            var viewportHeight = document.body.getBoundingClientRect().height;
+            var availableHeight = viewportHeight - menuHeight;
+            var body = document.getElementById('body');
+            var content = document.getElementById('content');
+            content.style.height = (availableHeight) + 'px';
+        }
+        window.addEventListener('resize', function () {
+            setHeight();
+        });
+        setHeight();
+
+        // Set up button listeners.    
+        var buttons = document.querySelectorAll('[data-button]');
+        for (var i = 0; i < buttons.length; i += 1) {
+            buttons[i].addEventListener('click', function(e) {
+                var page = e.target.getAttribute('data-page');
+                var content = '<iframe id="content" style="width: 100%;   border: none;" src="' + page + '"></iframe>';
+                var body = document.getElementById('body');
+                body.innerHTML = content;
+                setHeight();
+            });
+        }
+    </script>
+</body>
+</html>

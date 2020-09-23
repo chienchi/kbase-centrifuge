@@ -342,6 +342,10 @@ class Application(object):
                              name='centrifuge.run_centrifuge',
                              types=[dict])
         self.method_authentication['centrifuge.run_centrifuge'] = 'required'  # noqa
+        self.rpc_service.add(impl_centrifuge.exec_centrifuge,
+                             name='centrifuge.exec_centrifuge',
+                             types=[dict])
+        self.method_authentication['centrifuge.exec_centrifuge'] = 'required'  # noqa
         self.rpc_service.add(impl_centrifuge.status,
                              name='centrifuge.status',
                              types=[dict])

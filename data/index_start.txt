@@ -1,0 +1,9 @@
+<html style="height: 100%;">
+
+<head style="margin:0; padding: 0;">
+    <title>My Report</title>
+</head>
+
+<body style="margin: 0; padding: 0; height: 100%; box-sizing: border-box;">
+    <div id="menu" class="menu" style="border-bottom: 1px silver solid; box-sizing: border-box;">
+        <div class="menu-item" >

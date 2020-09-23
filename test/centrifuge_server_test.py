@@ -6,6 +6,7 @@ import subprocess
 import logging
 from configparser import ConfigParser
 
+from pprint import pprint
 from centrifuge.centrifugeImpl import centrifuge
 from centrifuge.centrifugeServer import MethodContext
 from centrifuge.authclient import KBaseAuth as _KBaseAuth
@@ -54,8 +55,10 @@ class centrifugeTest(unittest.TestCase):
             cls.wsClient.delete_workspace({'workspace': cls.wsName})
             print('Test workspace was deleted')
 
+    def getWsClient(self):
+        return self.__class__.wsClient
     # NOTE: According to Python unittest naming rules test method names should start from 'test'. # noqa
-    def test_your_method(self):
+    def test_param(self):
         # Prepare test objects in workspace if needed using
         # self.getWsClient().save_objects({'workspace': self.getWsName(),
         #                                  'objects': []})
@@ -65,15 +68,65 @@ class centrifugeTest(unittest.TestCase):
         #
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
+        input_refs = ['22956/5/2']
+        test_fastq_reads = ['22956/22/1']  # test.fastq_reads
+        three_reads_set = ['22956/71/1']  # test.fastq_reads (v1) HMP Even (v1) HMP Odd (v1)
+        five_reads_set = ['22956/66/1']
+        test_reads_set = ['22956/23/1']  # reads set with single read (test_reads_set)
+        hmp_reads_set = ['22956/59/1']
+        input_paired_refs = ['22956/8/1', '22956/7/1']
+
+        two_reads_set = ['22956/25/1'] #two_se_reads_set (v1) test.fastq_reads (v1) rhodo.art.q50.SE.reads.fastq (v2)
         result = self.serviceImpl.run_centrifuge(self.ctx, {'workspace_name': self.wsName,
-                                                       'input_refs': ['22852/10/1'],
+                                                       'input_refs': two_reads_set,
                                                        'db_type': 'p_compressed+h+v'
-                                                       })
-        report_params = result[0]
-        logging.info(report_params)
-        logging.info(result)
-        #self.assertEqual(report_params['html_links'][0]['name'],
-        #                  'centrifuge.krona.html')
+                                                       })[0]
+        logging.info(f"report_ref {result}")
+        logging.info(f"report_ref {result['report_ref']}")
+        self.assertIn('report_name', result)
+        self.assertIn('report_ref', result)
+        report = self.getWsClient().get_objects2({'objects': [{'ref': result['report_ref']}]})['data'][0]['data']
+        logging.info(f'print report {report}')
+        pprint(report)
+        self.assertIn('direct_html', report)
+        self.assertIn('file_links', report)
+        self.assertIn('html_links', report)
+        self.assertIn('objects_created', report)
+        self.assertIn('text_message', report)
+
+        result = self.serviceImpl.run_centrifuge(self.ctx, {'workspace_name': self.wsName,
+                                                            'input_refs': hmp_reads_set,
+                                                            'db_type': 'p_compressed+h+v'
+                                                            })[0]
+        logging.info(f"report_ref {result}")
+        logging.info(f"report_ref {result['report_ref']}")
+        self.assertIn('report_name', result)
+        self.assertIn('report_ref', result)
+        report = self.getWsClient().get_objects2({'objects': [{'ref': result['report_ref']}]})['data'][0]['data']
+        logging.info(f'print report {report}')
+        pprint(report)
+        self.assertIn('direct_html', report)
+        self.assertIn('file_links', report)
+        self.assertIn('html_links', report)
+        self.assertIn('objects_created', report)
+        self.assertIn('text_message', report)
+
+        result = self.serviceImpl.run_centrifuge(self.ctx, {'workspace_name': self.wsName,
+                                                        'input_refs': three_reads_set,
+                                                        'db_type': 'p_compressed+h+v'
+                                                        })[0]
+        logging.info(f"report_ref {result}")
+        logging.info(f"report_ref {result['report_ref']}")
+        self.assertIn('report_name', result)
+        self.assertIn('report_ref', result)
+        report = self.getWsClient().get_objects2({'objects': [{'ref': result['report_ref']}]})['data'][0]['data']
+        logging.info(f'print report {report}')
+        pprint(report)
+        self.assertIn('direct_html', report)
+        self.assertIn('file_links', report)
+        self.assertIn('html_links', report)
+        self.assertIn('objects_created', report)
+        self.assertIn('text_message', report)
 
     def test_centrifuge(self):
         # 'sh lib/gottcha2/src/uge-gottcha2.sh -i test/data/test.fastq -o test/data/output -p testing -d test/data/RefSeq-r90.cg.Viruses.species.fna'

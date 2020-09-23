@@ -35,8 +35,8 @@ class centrifuge:
     # the latter method is running.
     ######################################### noqa
     VERSION = "0.0.1"
-    GIT_URL = "git@github.com:chienchi/kbase-centrifuge.git"
-    GIT_COMMIT_HASH = "785d6e3abf0df4bceb4bd9215f7efce546d62398"
+    GIT_URL = "https://github.com/chienchi/kbase-centrifuge.git"
+    GIT_COMMIT_HASH = "4bf8c49dbcc55b21c98d222a6a8d4ec69223b2b2"
 
     #BEGIN_CLASS_HEADER
     def create_report(self, ws, output_list, html_folder):
@@ -363,7 +363,6 @@ class centrifuge:
                              'output is not type dict as required.')
         # return the results
         return [output]
-
     def exec_centrifuge(self, ctx, params):
         """
         :param params: instance of mapping from String to unspecified object
@@ -467,7 +466,7 @@ class centrifuge:
         if not os.path.exists(report_dir):
            os.makedirs(report_dir)
 
-        summary_file = os.path.join(output_dir, f'{outprefix}.report.txt')
+        summary_file = os.path.join(output_dir, f'{outprefix}.report.csv')
         if not os.path.exists(report_dir):
             os.makedirs(report_dir)
         summary_file_dt = os.path.join(report_dir, f'{label}_{outprefix}.datatable.html')
@@ -512,13 +511,6 @@ class centrifuge:
 
         output = {'output_files': output_files_list, 'html_zipped': html_zipped}
         #END exec_centrifuge
-
-        # At some point might do deeper type checking...
-        if not isinstance(output, dict):
-            raise ValueError('Method exec_centrifuge return value ' +
-                             'output is not type dict as required.')
-        # return the results
-        return [output]
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",

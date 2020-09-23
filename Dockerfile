@@ -10,7 +10,8 @@ MAINTAINER KBase Developer
 # https library that is out of date in the base image.
 RUN pip install coverage &&\
     apt-get update && apt-get install -y build-essential zlib1g-dev gawk wget bioperl
-
+RUN mkdir -p /kb/data
+COPY ./data/ /kb/data/
 # For centrifuge bin  and Krona tools
 WORKDIR /kb/module
 RUN \
