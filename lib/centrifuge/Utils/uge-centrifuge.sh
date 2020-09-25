@@ -27,7 +27,7 @@ FASTQ=
 REFDB=/data/centrifuge/p_compressed+h+v
 PREFIX=
 OUTPATH=
-THREADS=4
+THREADS=1
 OPTIONS=
 
 while getopts "i:d:o:p:t:n:h" OPTION
